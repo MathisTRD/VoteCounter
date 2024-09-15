@@ -36,33 +36,47 @@
         h3 {
             font-size: 2em;
         }
+        input {
+            font-size: 1.2em;
+            padding: 5px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
 
     <h1>Abstimmungszähler</h1>
 
+    <div>
+        <h3>Gebe die Teamnamen ein:</h3>
+        <input type="text" id="team1-name" placeholder="Team 1 Name" onchange="updateTeamName(1)">
+        <input type="text" id="team2-name" placeholder="Team 2 Name" onchange="updateTeamName(2)">
+        <input type="text" id="team3-name" placeholder="Team 3 Name" onchange="updateTeamName(3)">
+    </div>
+
     <div class="vote-section">
-        <h3>Team 1</h3>
+        <h3 id="pair1-name">Team 1</h3>
         <p>Ja: <span id="yes-pair1">0</span></p>
         <p>Nein: <span id="no-pair1">0</span></p>
-        <button onclick="vote('pair1', 'yes')">Ja</button>
-        <button onclick="vote('pair1', 'no')">Nein</button>
+        <button onclick="vote('pair1', 'yes')">Ja </button>
+        <button onclick="vote('pair1', 'no')">Nein 
+            
+        </button>
     </div>
 
     <div class="vote-section">
-        <h3>Team 2</h3>
+        <h3 id="pair2-name">Team 2</h3>
         <p>Ja: <span id="yes-pair2">0</span></p>
         <p>Nein: <span id="no-pair2">0</span></p>
-        <button onclick="vote('pair2', 'yes')">Ja</button>
-        <button onclick="vote('pair2', 'no')">Nein</button>
+        <button onclick="vote('pair2', 'yes')">Ja </button>
+        <button onclick="vote('pair2', 'no')">Nein </button>
     </div>
 
     <div class="vote-section">
-        <h3>Team 3 3</h3>
+        <h3 id="pair3-name">Team 3</h3>
         <p>Ja: <span id="yes-pair3">0</span></p>
         <p>Nein: <span id="no-pair3">0</span></p>
-        <button onclick="vote('pair3', 'yes')">Ja</button>
+        <button onclick="vote('pair3', 'yes')">Ja </button>
         <button onclick="vote('pair3', 'no')">Nein</button>
     </div>
 
@@ -76,6 +90,11 @@
         function vote(pair, choice) {
             voteCounts[pair][choice] += 1;
             document.getElementById(choice + '-' + pair).textContent = voteCounts[pair][choice];
+        }
+
+        function updateTeamName(pairNumber) {
+            const nameInput = document.getElementById(`team${pairNumber}-name`).value;
+            document.getElementById(`pair${pairNumber}-name`).textContent = nameInput || `Team ${pairNumber}`;
         }
     </script>
 
