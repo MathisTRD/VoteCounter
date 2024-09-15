@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstimmungszähler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .vote-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #ddd;
+            display: inline-block;
+            width: 300px;
+            font-size: 1.5em;
+        }
+        button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        h3 {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Abstimmungszähler</h1>
+
+    <div class="vote-section">
+        <h3>Team 1</h3>
+        <p>Ja: <span id="yes-pair1">0</span></p>
+        <p>Nein: <span id="no-pair1">0</span></p>
+        <button onclick="vote('pair1', 'yes')">Ja</button>
+        <button onclick="vote('pair1', 'no')">Nein</button>
+    </div>
+
+    <div class="vote-section">
+        <h3>Team 2</h3>
+        <p>Ja: <span id="yes-pair2">0</span></p>
+        <p>Nein: <span id="no-pair2">0</span></p>
+        <button onclick="vote('pair2', 'yes')">Ja</button>
+        <button onclick="vote('pair2', 'no')">Nein</button>
+    </div>
+
+    <div class="vote-section">
+        <h3>Team 3 3</h3>
+        <p>Ja: <span id="yes-pair3">0</span></p>
+        <p>Nein: <span id="no-pair3">0</span></p>
+        <button onclick="vote('pair3', 'yes')">Ja</button>
+        <button onclick="vote('pair3', 'no')">Nein</button>
+    </div>
+
+    <script>
+        let voteCounts = {
+            "pair1": {"yes": 0, "no": 0},
+            "pair2": {"yes": 0, "no": 0},
+            "pair3": {"yes": 0, "no": 0}
+        };
+
+        function vote(pair, choice) {
+            voteCounts[pair][choice] += 1;
+            document.getElementById(choice + '-' + pair).textContent = voteCounts[pair][choice];
+        }
+    </script>
+
+</body>
+</html>
